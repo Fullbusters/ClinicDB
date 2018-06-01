@@ -1,6 +1,7 @@
 package com.clinic.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -28,10 +29,13 @@ public class Patient {
     @JoinColumn(name = "Doctor_Id")
     private Doctor doctor;
 
+    @OneToMany( mappedBy = "patient")
+    private List<Time> time;
+
     public Patient() {
     }
 
-    public Patient(String firstName, String lastName, String dateOfBirth, String sex, String phoneNumber, String info, Doctor doctor) {
+    public Patient(String firstName, String lastName, String dateOfBirth, String sex, String phoneNumber, String info, Doctor doctor, List<Time> time) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -39,6 +43,7 @@ public class Patient {
         this.phoneNumber = phoneNumber;
         this.info = info;
         this.doctor = doctor;
+        this.time = time;
     }
 
     public Long getPatientId() {
@@ -103,6 +108,14 @@ public class Patient {
 
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
+    }
+
+    public List<Time> getTime() {
+        return time;
+    }
+
+    public void setTime(List<Time> time) {
+        this.time = time;
     }
 
     @Override

@@ -28,10 +28,14 @@ public class Doctor {
     @OneToMany(mappedBy = "doctor",fetch = FetchType.EAGER)
     private List<Patient> patients;
 
+
+    @OneToMany( mappedBy = "doctor")
+    private List<Time> time;
+
     public Doctor() {
     }
 
-    public Doctor(String name, String phoneNumber, String sex, String info, String workingHours, Specialty specialty, List<Patient> patients) {
+    public Doctor(String name, String phoneNumber, String sex, String info, String workingHours, Specialty specialty, List<Patient> patients, List<Time> time) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.sex = sex;
@@ -39,6 +43,7 @@ public class Doctor {
         this.workingHours = workingHours;
         this.specialty = specialty;
         this.patients = patients;
+        this.time = time;
     }
 
     public Long getDoctorId() {
@@ -103,6 +108,14 @@ public class Doctor {
 
     public void setPatients(List<Patient> patients) {
         this.patients = patients;
+    }
+
+    public List<Time> getTime() {
+        return time;
+    }
+
+    public void setTime(List<Time> time) {
+        this.time = time;
     }
 
     @Override
