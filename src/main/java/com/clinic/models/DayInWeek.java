@@ -13,6 +13,47 @@ public class DayInWeek {
     private Long dayInWeekId;
     @Column(name="Day")
     private String day;
-    @OneToMany( mappedBy = "doctor")
+    @OneToMany( mappedBy = "dayInWeek")
     private List<WeeklyTimetable> weeklyTimetables;
+
+    public DayInWeek() {
+    }
+
+    public DayInWeek(String day, List<WeeklyTimetable> weeklyTimetables) {
+        this.day = day;
+        this.weeklyTimetables = weeklyTimetables;
+    }
+
+    public Long getDayInWeekId() {
+        return dayInWeekId;
+    }
+
+    public void setDayInWeekId(Long dayInWeekId) {
+        this.dayInWeekId = dayInWeekId;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public List<WeeklyTimetable> getWeeklyTimetables() {
+        return weeklyTimetables;
+    }
+
+    public void setWeeklyTimetables(List<WeeklyTimetable> weeklyTimetables) {
+        this.weeklyTimetables = weeklyTimetables;
+    }
+
+    @Override
+    public String toString() {
+        return "DayInWeek{" +
+                "dayInWeekId=" + dayInWeekId +
+                ", day='" + day + '\'' +
+                ", weeklyTimetables=" + weeklyTimetables +
+                '}';
+    }
 }

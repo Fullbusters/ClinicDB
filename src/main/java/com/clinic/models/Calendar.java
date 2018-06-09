@@ -1,6 +1,7 @@
 package com.clinic.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="Calendar")
@@ -23,16 +24,19 @@ public class Calendar {
     @ManyToOne
     @JoinColumn(name = "Patient_Id")
     private Patient patient;
+    @OneToMany( mappedBy = "calendar")
+    private List<Comment> comments;
 
     public Calendar() {
     }
 
-    public Calendar(String date, String visitStart, String visitEnd, Doctor doctor, Patient patient) {
+    public Calendar(String date, String visitStart, String visitEnd, Doctor doctor, Patient patient, List<Comment> comments) {
         this.date = date;
         this.visitStart = visitStart;
         this.visitEnd = visitEnd;
         this.doctor = doctor;
         this.patient = patient;
+        this.comments = comments;
     }
 
     public Long getCalendarId() {
@@ -83,15 +87,11 @@ public class Calendar {
         this.patient = patient;
     }
 
-    @Override
-    public String toString() {
-        return "Calendar{" +
-                "calendarId=" + calendarId +
-                ", date='" + date + '\'' +
-                ", visitStart='" + visitStart + '\'' +
-                ", visitEnd='" + visitEnd + '\'' +
-                ", doctor=" + doctor +
-                ", patient=" + patient +
-                '}';
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

@@ -1,9 +1,9 @@
 package com.clinic.repository;
 
-import com.clinic.models.Patient;
+import com.clinic.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PatientRepository extends JpaRepository<Patient, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 }
