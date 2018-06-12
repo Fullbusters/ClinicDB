@@ -22,8 +22,7 @@ public class Doctor {
     private String info;
     @Column(name="Working_hours")
     private String workingHours;
-    @OneToOne
-    @JoinColumn(name = "User_Id")
+    @OneToOne(mappedBy = "doctor")
     private User user;
     @ManyToOne
     @JoinColumn(name = "Specialty_Id")

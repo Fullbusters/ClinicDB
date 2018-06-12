@@ -19,10 +19,14 @@ public class UserService {
     public List<User> findAll(){
         return userRepository.findAll();
     }
-    public void save(User user){
-        userRepository.save(user);
+    public User save(User user){
+       return userRepository.save(user);
     }
     public void delete(Long id){
         userRepository.delete(id);
     }
+    public User findByNickname(String nickname){
+        return userRepository.findByNickname(nickname);
+    }
+
 }

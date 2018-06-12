@@ -14,12 +14,14 @@ public class User {
     private String nickname;
     @Column(name="Password")
     private String Password;
-    @OneToOne(mappedBy = "user")
+    @OneToOne
+    @JoinColumn(name = "Patient_Id")
     private Patient patient;
-    @OneToOne(mappedBy = "user")
+    @OneToOne
+    @JoinColumn(name = "Doctor_Id")
     private Doctor doctor;
     @ManyToOne
-    @JoinColumn(name = "Doctor_Id")
+    @JoinColumn(name = "role_Id")
     private Role role;
 
     public User() {

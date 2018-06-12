@@ -25,8 +25,7 @@ public class Patient {
     private String phoneNumber;
     @Column(name="Info")
     private String info;
-    @OneToOne
-    @JoinColumn(name = "User_Id")
+    @OneToOne(mappedBy = "patient")
     private User user;
     @ManyToOne
     @JoinColumn(name = "Doctor_Id")
