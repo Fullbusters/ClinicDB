@@ -1,5 +1,7 @@
 package com.clinic.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class Calendar {
     private String visitStart;
     @Column(name="Visit_End")
     private String visitEnd;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "Doctor_Id")
     private Doctor doctor;

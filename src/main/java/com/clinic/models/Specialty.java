@@ -1,6 +1,8 @@
 package com.clinic.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,6 +18,7 @@ public class Specialty {
     private String name;
     @Column(name="Info")
     private String info;
+    @JsonIgnore
     @OneToMany(mappedBy = "specialty",fetch = FetchType.EAGER)
     private List<Doctor> doctor;
 

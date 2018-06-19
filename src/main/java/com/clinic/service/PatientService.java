@@ -16,11 +16,15 @@ public class PatientService {
     public Patient findOne(Long id){
         return patientRepository.findOne(id);
     }
+    public Patient findOneByFirst_Name(String firstName){
+        return patientRepository.findOneByFirstName(firstName);
+    }
+
     public List<Patient> findAll(){
         return patientRepository.findAll();
     }
-    public void save(Patient patient){
-        patientRepository.save(patient);
+    public Patient save(Patient patient){
+      return   patientRepository.save(patient);
     }
     public void delete(Long id){
         patientRepository.delete(id);

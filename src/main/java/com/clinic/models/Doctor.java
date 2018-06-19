@@ -1,5 +1,7 @@
 package com.clinic.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -20,29 +22,30 @@ public class Doctor {
     private String sex;
     @Column(name="Info")
     private String info;
-    @Column(name="Working_hours")
-    private String workingHours;
+    @JsonIgnore
     @OneToOne(mappedBy = "doctor")
     private User user;
     @ManyToOne
     @JoinColumn(name = "Specialty_Id")
     private Specialty specialty;
+    @JsonIgnore
     @OneToMany(mappedBy = "doctor",fetch = FetchType.EAGER)
     private List<Patient> patients;
+    @JsonIgnore
     @OneToMany( mappedBy = "doctor")
     private List<Calendar> calendar;
+    @JsonIgnore
     @OneToMany( mappedBy = "doctor")
     private List<WeeklyTimetable> weeklyTimetables;
 
     public Doctor() {
     }
 
-    public Doctor(String name, String phoneNumber, String sex, String info, String workingHours, User user, Specialty specialty, List<Patient> patients, List<Calendar> calendar, List<WeeklyTimetable> weeklyTimetables) {
+    public Doctor(String name, String phoneNumber, String sex, String info,  User user, Specialty specialty, List<Patient> patients, List<Calendar> calendar, List<WeeklyTimetable> weeklyTimetables) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.sex = sex;
         this.info = info;
-        this.workingHours = workingHours;
         this.user = user;
         this.specialty = specialty;
         this.patients = patients;
@@ -90,14 +93,6 @@ public class Doctor {
         this.info = info;
     }
 
-    public String getWorkingHours() {
-        return workingHours;
-    }
-
-    public void setWorkingHours(String workingHours) {
-        this.workingHours = workingHours;
-    }
-
     public User getUser() {
         return user;
     }
@@ -136,5 +131,21 @@ public class Doctor {
 
     public void setWeeklyTimetables(List<WeeklyTimetable> weeklyTimetables) {
         this.weeklyTimetables = weeklyTimetables;
+    }
+
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "doctorId=" + doctorId +
+                ", name='" + name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", sex='" + sex + '\'' +
+                ", info='" + info + '\'' +
+                ", user=" + user +
+                ", specialty=" + specialty +
+                ", patients=" + patients +
+                ", calendar=" + calendar +
+                ", weeklyTimetables=" + weeklyTimetables +
+                '}';
     }
 }

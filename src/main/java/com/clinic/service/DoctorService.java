@@ -1,8 +1,12 @@
 package com.clinic.service;
 
 import com.clinic.models.Doctor;
+import com.clinic.models.Specialty;
 import com.clinic.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,11 +23,14 @@ public class DoctorService {
     public List<Doctor> findAll(){
         return doctorRepository.findAll();
     }
-    public void save(Doctor doctor){
-        doctorRepository.save(doctor);
+    public Doctor save(Doctor doctor){
+        return doctorRepository.save(doctor);
     }
     public void delete(Long id){
         doctorRepository.delete(id);
+    }
+    public List<Doctor> findBySpecialtyid(Long id ){
+        return doctorRepository.findBySpecialtyid(id);
     }
 
 }

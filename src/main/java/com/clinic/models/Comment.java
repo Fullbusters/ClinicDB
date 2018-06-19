@@ -1,5 +1,7 @@
 package com.clinic.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +16,7 @@ public class Comment {
     private String comment;
     @Column(name="Time")
     private String time;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "Calendar_Id")
     private Calendar calendar;

@@ -1,5 +1,7 @@
 package com.clinic.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,28 +12,25 @@ public class WeeklyTimetable {
     @GeneratedValue
     @Column(name="Weekly_Timetable_id")
     private Long weeklyTimetableId;
-    @Column(name="Start")
-    private String start;
-    @Column(name="End")
-    private String end;
+    @Column(name="Start_date")
+    private String start_date;
+    @Column(name="End_date")
+    private String end_date;
     @Column(name="Duration_Visit")
     private String durationVisit;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "Doctor_Id")
     private Doctor doctor;
-    @ManyToOne
-    @JoinColumn(name = "Day_In_Week_Id")
-    private DayInWeek dayInWeek;
 
     public WeeklyTimetable() {
     }
 
-    public WeeklyTimetable(String start, String end, String durationVisit, Doctor doctor, DayInWeek dayInWeek) {
-        this.start = start;
-        this.end = end;
+    public WeeklyTimetable(String start_date, String end_date, String durationVisit, Doctor doctor) {
+        this.start_date = start_date;
+        this.end_date = end_date;
         this.durationVisit = durationVisit;
         this.doctor = doctor;
-        this.dayInWeek = dayInWeek;
     }
 
     public Long getWeeklyTimetableId() {
@@ -42,20 +41,20 @@ public class WeeklyTimetable {
         this.weeklyTimetableId = weeklyTimetableId;
     }
 
-    public String getStart() {
-        return start;
+    public String getStart_date() {
+        return start_date;
     }
 
-    public void setStart(String start) {
-        this.start = start;
+    public void setStart_date(String start_date) {
+        this.start_date = start_date;
     }
 
-    public String getEnd() {
-        return end;
+    public String getEnd_date() {
+        return end_date;
     }
 
-    public void setEnd(String end) {
-        this.end = end;
+    public void setEnd_date(String end_date) {
+        this.end_date = end_date;
     }
 
     public String getDurationVisit() {
@@ -73,14 +72,5 @@ public class WeeklyTimetable {
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
     }
-
-    public DayInWeek getDayInWeek() {
-        return dayInWeek;
-    }
-
-    public void setDayInWeek(DayInWeek dayInWeek) {
-        this.dayInWeek = dayInWeek;
-    }
-
 
 }

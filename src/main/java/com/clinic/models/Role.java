@@ -1,5 +1,7 @@
 package com.clinic.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,6 +15,7 @@ public class Role {
     private Long roleId;
     @Column(name="Role")
     private String role;
+    @JsonIgnore
     @OneToMany( mappedBy = "role")
     private List<User> users;
 

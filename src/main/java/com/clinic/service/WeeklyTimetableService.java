@@ -19,8 +19,8 @@ public class WeeklyTimetableService {
     public List<WeeklyTimetable> findAll(){
         return weeklyTimetableRepository.findAll();
     }
-    public void save(WeeklyTimetable weeklyTimetable){
-        weeklyTimetableRepository.save(weeklyTimetable);
+    public WeeklyTimetable save(WeeklyTimetable weeklyTimetable){
+        return  weeklyTimetableRepository.save(weeklyTimetable);
     }
     public void delete(Long id){
         weeklyTimetableRepository.delete(id);

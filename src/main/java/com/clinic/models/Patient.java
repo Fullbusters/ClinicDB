@@ -1,5 +1,7 @@
 package com.clinic.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,8 +11,8 @@ import java.util.List;
 public class Patient {
 
 
-    @Id
-    @GeneratedValue
+        @Id
+        @GeneratedValue
     @Column(name="Patient_id")
     private Long patientId;
     @Column(name="First_Name")
@@ -25,11 +27,13 @@ public class Patient {
     private String phoneNumber;
     @Column(name="Info")
     private String info;
+    @JsonIgnore
     @OneToOne(mappedBy = "patient")
     private User user;
     @ManyToOne
     @JoinColumn(name = "Doctor_Id")
     private Doctor doctor;
+    @JsonIgnore
     @OneToMany( mappedBy = "patient")
     private List<Calendar> calendar;
 
@@ -127,5 +131,21 @@ public class Patient {
 
     public void setCalendar(List<Calendar> calendar) {
         this.calendar = calendar;
+    }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "patientId=" + patientId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", sex='" + sex + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", info='" + info + '\'' +
+                ", user=" + user +
+                ", doctor=" + doctor +
+                ", calendar=" + calendar +
+                '}';
     }
 }
